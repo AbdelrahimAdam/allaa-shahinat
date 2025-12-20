@@ -35,19 +35,21 @@ const Home = () => {
 
   return (
     <div>
-      {/* Hero Section with Transparent Cards */}
+      {/* Hero Section with Fixed Background */}
       <section className="relative bg-industrial-dark text-white py-20 lg:py-32 overflow-hidden">
-        {/* Background Image with Gradient Overlay */}
+        {/* Fixed Background Image with Gradient Overlay */}
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          className="fixed inset-0 bg-cover bg-center bg-no-repeat -z-10"
           style={{
             backgroundImage: 'url("/renault-trucks-k-2021-ar.jpg.webp")',
+            backgroundAttachment: 'fixed'
           }}
         >
           <div className="absolute inset-0 bg-gradient-to-br from-industrial-dark/95 via-industrial-dark/80 to-industrial-dark/70"></div>
           <div className="absolute inset-0 bg-gradient-to-l from-industrial-dark/60 to-transparent lg:block hidden"></div>
         </div>
 
+        {/* Content Container */}
         <div className="container mx-auto px-4 relative z-10">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
             {/* Main Content */}
@@ -171,7 +173,7 @@ const Home = () => {
       <AdsensePlaceholder type="leaderboard" />
 
       {/* Categories Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white relative z-10">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-industrial-dark mb-4">
@@ -230,7 +232,7 @@ const Home = () => {
       <AdsensePlaceholder type="rectangle" />
 
       {/* Featured Products */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-gray-100">
+      <section className="py-20 bg-gradient-to-br from-gray-50 to-gray-100 relative z-10">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-industrial-dark mb-4">
@@ -259,7 +261,7 @@ const Home = () => {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white relative z-10">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-industrial-dark mb-4">
@@ -313,7 +315,7 @@ const Home = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 bg-industrial-dark text-white">
+      <section className="py-16 bg-industrial-dark text-white relative z-10">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
             {[
@@ -336,7 +338,7 @@ const Home = () => {
       </section>
 
       {/* SEO Content */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-gray-50 relative z-10">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="bg-white rounded-2xl shadow-lg p-8 lg:p-12">
