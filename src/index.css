@@ -1,0 +1,46 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@layer base {
+  html {
+    font-family: 'Tajawal', system-ui, sans-serif;
+  }
+  
+  body {
+    direction: rtl;
+    text-align: right;
+  }
+}
+
+/* Custom industrial styling */
+.industrial-gradient {
+  background: linear-gradient(135deg, #2D2D2D 0%, #4A4A4A 100%);
+}
+
+.industrial-border {
+  border: 2px solid #FFD100;
+}
+
+.industrial-shadow {
+  box-shadow: 0 4px 20px rgba(0, 85, 164, 0.15);
+}
+
+/* RTL specific adjustments */
+.rtl-grid {
+  direction: rtl;
+}
+
+/* Loading animation */
+@keyframes pulse-industrial {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse-industrial {
+  animation: pulse-industrial 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}

@@ -1,0 +1,502 @@
+[
+  {
+    "id": 1,
+    "name": "طقم تروس دفرنس رينو CEI أصلي",
+    "category": "قطع الدفرنس",
+    "price": 45000,
+    "oem": "CEI-4451812",
+    "models": ["Renault Premium", "Renault Kerax"],
+    "image": "/images/gear-set-1.jpg",
+    "description": "طقم تروس دفرنس عالي الجودة صناعة إيطالية CEI."
+  },
+  {
+    "id": 2,
+    "name": "كراون ويل وبنيون رينو",
+    "category": "قطع الدفرنس",
+    "price": 38000,
+    "oem": "RW-55121",
+    "models": ["Renault Kerax"],
+    "image": "/images/crown-wheel-1.jpg",
+    "description": "كراون ويل وبنيون أصلي مناسب لشاحنات رينو الثقيلة."
+  },
+  {
+    "id": 3,
+    "name": "رولمان بلي دفرنس رينو",
+    "category": "قطع الدفرنس",
+    "price": 9500,
+    "oem": "NSK-33211",
+    "models": ["Premium", "Kerax"],
+    "image": "/images/bearing-1.jpg",
+    "description": "رولمان بلي عالي التحمل للدفرنس الخلفي."
+  },
+  {
+    "id": 4,
+    "name": "جوان دفرنس أصلي",
+    "category": "قطع الدفرنس",
+    "price": 2800,
+    "oem": "GWN-8821",
+    "models": ["Midlum", "Kerax"],
+    "image": "/images/gasket-1.jpg",
+    "description": "جوان دفرنس بجودة ممتازة مانع للتسريب."
+  },
+  {
+    "id": 5,
+    "name": "هاف شفت رينو ثقيل",
+    "category": "قطع الدفرنس",
+    "price": 22000,
+    "oem": "HS-9921",
+    "models": ["Premium"],
+    "image": "/images/half-shaft-1.jpg",
+    "description": "هاف شفت قوي ومناسب للتحميل الثقيل."
+  },
+  {
+    "id": 6,
+    "name": "أكس خلفي كامل رينو Kerax",
+    "category": "أكس كامل",
+    "price": 120000,
+    "oem": "AX-8831",
+    "models": ["Kerax"],
+    "image": "/images/axle-full-1.jpg",
+    "description": "أكس كامل بحالة ممتازة جاهز للتركيب."
+  },
+  {
+    "id": 7,
+    "name": "أكس أمامي شاحنة رينو Premium",
+    "category": "أكس كامل",
+    "price": 95000,
+    "oem": "AX-FR-551",
+    "models": ["Premium"],
+    "image": "/images/front-axle-1.jpg",
+    "description": "أكس أمامي أصلي لشاحنة رينو Premium."
+  },
+  {
+    "id": 8,
+    "name": "مساعد هواء خلفي Original",
+    "category": "نظام التعليق",
+    "price": 18000,
+    "oem": "AS-7712",
+    "models": ["Kerax", "Premium"],
+    "image": "/images/air-suspension-1.jpg",
+    "description": "مساعد هواء بجودة ممتازة ومتانة عالية."
+  },
+  {
+    "id": 9,
+    "name": "ياي خلفي Heavy Duty",
+    "category": "نظام التعليق",
+    "price": 48000,
+    "oem": "SP-8811",
+    "models": ["Kerax"],
+    "image": "/images/spring-1.jpg",
+    "description": "ياي خلفي قوي يتحمل الأوزان الثقيلة."
+  },
+  {
+    "id": 10,
+    "name": "موازن شاحنة رينو",
+    "category": "نظام التعليق",
+    "price": 15000,
+    "oem": "STB-1211",
+    "models": ["Premium"],
+    "image": "/images/stabilizer-1.jpg",
+    "description": "موازن متين لتحسين الثبات أثناء السير."
+  },
+  {
+    "id": 11,
+    "name": "طرمبة مياه رينو",
+    "category": "قطع المحرك",
+    "price": 7500,
+    "oem": "WP-5112",
+    "models": ["Kerax", "Midlum"],
+    "image": "/images/water-pump-1.jpg",
+    "description": "طرمبة مياه بجودة عالية ذات عمر طويل."
+  },
+  {
+    "id": 12,
+    "name": "طرمبة زيت أصلية",
+    "category": "قطع المحرك",
+    "price": 6800,
+    "oem": "OP-9981",
+    "models": ["Premium"],
+    "image": "/images/oil-pump-1.jpg",
+    "description": "طرمبة زيت تضمن ضغط مثالي للمحرك."
+  },
+  {
+    "id": 13,
+    "name": "فلتر زيت رينو",
+    "category": "قطع المحرك",
+    "price": 1200,
+    "oem": "OF-110",
+    "models": ["All Models"],
+    "image": "/images/oil-filter-1.jpg",
+    "description": "فلتر زيت عالي الجودة يحمي المحرك."
+  },
+  {
+    "id": 14,
+    "name": "فلتر هواء",
+    "category": "قطع المحرك",
+    "price": 1600,
+    "oem": "AF-882",
+    "models": ["Premium"],
+    "image": "/images/air-filter-1.jpg",
+    "description": "فلتر هواء لتنقية الهواء الداخل للمحرك."
+  },
+  {
+    "id": 15,
+    "name": "فلتر ديزل",
+    "category": "قطع المحرك",
+    "price": 2200,
+    "oem": "DF-110",
+    "models": ["Kerax", "Midlum"],
+    "image": "/images/diesel-filter-1.jpg",
+    "description": "فلتر ديزل يمنع الشوائب ويحمي النظام."
+  },
+  {
+    "id": 16,
+    "name": "كلتش كامل",
+    "category": "قطع القير",
+    "price": 39000,
+    "oem": "CL-5511",
+    "models": ["Premium"],
+    "image": "/images/clutch-1.jpg",
+    "description": "كلتش أصلي متين لتحمل الاستخدام القوي."
+  },
+  {
+    "id": 17,
+    "name": "قرص ديسك رينو",
+    "category": "قطع القير",
+    "price": 21000,
+    "oem": "DK-8181",
+    "models": ["Kerax"],
+    "image": "/images/clutch-disk-1.jpg",
+    "description": "قرص ديسك عالي الجودة."
+  },
+  {
+    "id": 18,
+    "name": "حساس قير",
+    "category": "قطع القير",
+    "price": 6000,
+    "oem": "GS-771",
+    "models": ["Midlum"],
+    "image": "/images/gear-sensor-1.jpg",
+    "description": "حساس قير أصلي."
+  },
+  {
+    "id": 19,
+    "name": "طقم إصلاح قير",
+    "category": "قطع القير",
+    "price": 25000,
+    "oem": "GR-221",
+    "models": ["Premium"],
+    "image": "/images/gear-repair-1.jpg",
+    "description": "طقم إصلاح كامل للقير."
+  },
+  {
+    "id": 20,
+    "name": "تيل فرامل شاحنة رينو",
+    "category": "نظام الفرامل",
+    "price": 6800,
+    "oem": "BP-882",
+    "models": ["All Models"],
+    "image": "/images/brake-pad-1.jpg",
+    "description": "تيل فرامل قوي عالي التحمل."
+  },
+  {
+    "id": 21,
+    "name": "هوب فرامل",
+    "category": "نظام الفرامل",
+    "price": 14500,
+    "oem": "BD-991",
+    "models": ["Kerax"],
+    "image": "/images/brake-drum-1.jpg",
+    "description": "هوب فرامل بتصنيع متين."
+  },
+  {
+    "id": 22,
+    "name": "سليندر فرامل",
+    "category": "نظام الفرامل",
+    "price": 5200,
+    "oem": "BC-511",
+    "models": ["Premium"],
+    "image": "/images/brake-cylinder-1.jpg",
+    "description": "سليندر فرامل بجودة عالية."
+  },
+  {
+    "id": 23,
+    "name": "خرطوش فرامل",
+    "category": "نظام الفرامل",
+    "price": 900,
+    "oem": "BH-551",
+    "models": ["All Models"],
+    "image": "/images/brake-hose-1.jpg",
+    "description": "خرطوش فرامل مقاوم للحرارة."
+  },
+  {
+    "id": 24,
+    "name": "دينمو شاحنة رينو",
+    "category": "الكهرباء",
+    "price": 25000,
+    "oem": "AL-992",
+    "models": ["Premium"],
+    "image": "/images/alternator-1.jpg",
+    "description": "دينمو قوي بقدرة عالية."
+  },
+  {
+    "id": 25,
+    "name": "سلف تشغيل",
+    "category": "الكهرباء",
+    "price": 18500,
+    "oem": "ST-551",
+    "models": ["Kerax"],
+    "image": "/images/starter-1.jpg",
+    "description": "سلف بجودة ممتازة."
+  },
+  {
+    "id": 26,
+    "name": "حساس حرارة",
+    "category": "الكهرباء",
+    "price": 1500,
+    "oem": "TS-771",
+    "models": ["All Models"],
+    "image": "/images/temp-sensor-1.jpg",
+    "description": "حساس حرارة دقيق لحماية المحرك."
+  },
+  {
+    "id": 27,
+    "name": "ضفيرة كهرباء",
+    "category": "الكهرباء",
+    "price": 31000,
+    "oem": "WR-8812",
+    "models": ["Kerax"],
+    "image": "/images/wiring-1.jpg",
+    "description": "ضفيرة كاملة ذات جودة عالية."
+  },
+  {
+    "id": 28,
+    "name": "بطارية شاحنة 200 أمبير",
+    "category": "الكهرباء",
+    "price": 35000,
+    "oem": "BT-200",
+    "models": ["All Models"],
+    "image": "/images/battery-1.jpg",
+    "description": "بطارية قوية تدوم طويلاً."
+  },
+  {
+    "id": 29,
+    "name": "راديتر تبريد شاحنة رينو",
+    "category": "نظام التبريد",
+    "price": 26000,
+    "oem": "RD-771",
+    "models": ["Premium", "Kerax"],
+    "image": "/images/radiator-1.jpg",
+    "description": "راديتر عالي الكفاءة."
+  },
+  {
+    "id": 30,
+    "name": "مروحة تبريد",
+    "category": "نظام التبريد",
+    "price": 7800,
+    "oem": "FN-881",
+    "models": ["Midlum"],
+    "image": "/images/fan-1.jpg",
+    "description": "مروحة تبريد سريعة الأداء."
+  },
+  {
+    "id": 31,
+    "name": "غطاء رديتر",
+    "category": "نظام التبريد",
+    "price": 600,
+    "oem": "RC-110",
+    "models": ["All Models"],
+    "image": "/images/rad-cap-1.jpg",
+    "description": "غطاء رديتر يمنع التسريب."
+  },
+  {
+    "id": 32,
+    "name": "خرطوش مياه",
+    "category": "نظام التبريد",
+    "price": 950,
+    "oem": "WC-661",
+    "models": ["All Models"],
+    "image": "/images/water-hose-1.jpg",
+    "description": "خرطوش مياه مقاوم للحرارة."
+  },
+  {
+    "id": 33,
+    "name": "زيت محرك 20W50",
+    "category": "مستهلكات",
+    "price": 4500,
+    "oem": "OL-2050",
+    "models": ["All Models"],
+    "image": "/images/oil-1.jpg",
+    "description": "زيت محرك عالي الجودة."
+  },
+  {
+    "id": 34,
+    "name": "فلتر مقصورة",
+    "category": "مستهلكات",
+    "price": 1600,
+    "oem": "CF-551",
+    "models": ["Premium"],
+    "image": "/images/cabin-filter-1.jpg",
+    "description": "فلتر مقصورة لتنقية الهواء الداخلي."
+  },
+  {
+    "id": 35,
+    "name": "جريز تزييت",
+    "category": "مستهلكات",
+    "price": 800,
+    "oem": "GR-881",
+    "models": ["All Models"],
+    "image": "/images/grease-1.jpg",
+    "description": "جريز عالي اللزوجة."
+  },
+  {
+    "id": 36,
+    "name": "ربل مقصات",
+    "category": "مستهلكات",
+    "price": 3500,
+    "oem": "RB-551",
+    "models": ["Kerax"],
+    "image": "/images/rubber-1.jpg",
+    "description": "ربل مقصات ممتاز الجودة."
+  },
+  {
+    "id": 37,
+    "name": "مراية جانبية شاحنة رينو",
+    "category": "إكسسوارات",
+    "price": 18000,
+    "oem": "MR-771",
+    "models": ["Premium"],
+    "image": "/images/mirror-1.jpg",
+    "description": "مراية جانبية متينة."
+  },
+  {
+    "id": 38,
+    "name": "رفرف جانبي",
+    "category": "إكسسوارات",
+    "price": 11000,
+    "oem": "FF-992",
+    "models": ["Kerax"],
+    "image": "/images/fender-1.jpg",
+    "description": "رفرف جانبي قوي لتحمل الظروف."
+  },
+  {
+    "id": 39,
+    "name": "لمبة LED أمامية",
+    "category": "إكسسوارات",
+    "price": 6500,
+    "oem": "LED-551",
+    "models": ["All Models"],
+    "image": "/images/led-light-1.jpg",
+    "description": "إضاءة LED قوية."
+  },
+  {
+    "id": 40,
+    "name": "صدام أمامي رينو",
+    "category": "إكسسوارات",
+    "price": 35000,
+    "oem": "BM-551",
+    "models": ["Premium"],
+    "image": "/images/bumper-1.jpg",
+    "description": "صدام أمامي عالي التحمل."
+  },
+  {
+    "id": 41,
+    "name": "حساس ABS",
+    "category": "الكهرباء",
+    "price": 4300,
+    "oem": "ABS-661",
+    "models": ["Kerax"],
+    "image": "/images/abs-sensor.jpg",
+    "description": "حساس ABS لضمان أمان الفرامل."
+  },
+  {
+    "id": 42,
+    "name": "كمبرسر هواء",
+    "category": "نظام التعليق",
+    "price": 59000,
+    "oem": "CP-771",
+    "models": ["Premium"],
+    "image": "/images/air-compressor.jpg",
+    "description": "كمبرسر هواء قوي للمساعدات."
+  },
+  {
+    "id": 43,
+    "name": "طقم بواجي ديزل",
+    "category": "قطع المحرك",
+    "price": 6500,
+    "oem": "PL-882",
+    "models": ["Midlum"],
+    "image": "/images/glow-plug.jpg",
+    "description": "طقم بواجي تشغيل سريع."
+  },
+  {
+    "id": 44,
+    "name": "طرمبة ديزل",
+    "category": "قطع المحرك",
+    "price": 26000,
+    "oem": "DP-991",
+    "models": ["Premium"],
+    "image": "/images/diesel-pump.jpg",
+    "description": "طرمبة ديزل عالية الضغط."
+  },
+  {
+    "id": 45,
+    "name": "كرتير زيت",
+    "category": "قطع المحرك",
+    "price": 14000,
+    "oem": "OC-551",
+    "models": ["Kerax"],
+    "image": "/images/oil-pan.jpg",
+    "description": "كرتير زيت بجودة ممتازة."
+  },
+  {
+    "id": 46,
+    "name": "حساس كرنك",
+    "category": "الكهرباء",
+    "price": 4800,
+    "oem": "CKS-991",
+    "models": ["Premium"],
+    "image": "/images/crank-sensor.jpg",
+    "description": "حساس كرنك دقيق."
+  },
+  {
+    "id": 47,
+    "name": "بلف هواء",
+    "category": "نظام التعليق",
+    "price": 3300,
+    "oem": "AV-551",
+    "models": ["All Models"],
+    "image": "/images/air-valve.jpg",
+    "description": "بلف هواء متين للمساعدات."
+  },
+  {
+    "id": 48,
+    "name": "طرمبة هيدروليك",
+    "category": "قطع المحرك",
+    "price": 44000,
+    "oem": "HP-881",
+    "models": ["Kerax"],
+    "image": "/images/hydraulic-pump.jpg",
+    "description": "طرمبة هيدروليك قوية."
+  },
+  {
+    "id": 49,
+    "name": "واير قير",
+    "category": "قطع القير",
+    "price": 6500,
+    "oem": "GC-771",
+    "models": ["Premium"],
+    "image": "/images/gear-cable.jpg",
+    "description": "واير قير متين يدوم طويلاً."
+  },
+  {
+    "id": 50,
+    "name": "طقم مسامير أكس",
+    "category": "أكس كامل",
+    "price": 7500,
+    "oem": "AXB-661",
+    "models": ["Kerax"],
+    "image": "/images/axle-bolts.jpg",
+    "description": "مسامير أكس عالية القوة."
+  }
+]
