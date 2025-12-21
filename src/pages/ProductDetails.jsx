@@ -1,7 +1,6 @@
 import React from 'react'
 import { useParams, Link } from 'react-router-dom'
 import productsData from '../data/products.json'
-import AdsensePlaceholder from '../components/AdsensePlaceholder'
 
 const ProductDetails = () => {
   const { id } = useParams()
@@ -11,7 +10,7 @@ const ProductDetails = () => {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
-          <div className="text-6xl mb-4">😕</div>
+          <i className="fas fa-exclamation-circle text-6xl text-yellow-500 mb-4"></i>
           <h1 className="text-2xl font-bold text-industrial-dark mb-4">
             المنتج غير موجود
           </h1>
@@ -29,8 +28,8 @@ const ProductDetails = () => {
   const formatPrice = (price) => {
     return new Intl.NumberFormat('ar-SA', {
       style: 'currency',
-      currency: 'SAR'
-    }).format(price)
+      currency: 'EGP'
+    }).format(price || 0)
   }
 
   const whatsappMessage = `أريد تفاصيل حول: ${product.name} (رقم أصلي: ${product.oem})`
@@ -49,8 +48,8 @@ const ProductDetails = () => {
     },
     "offers": {
       "@type": "Offer",
-      "price": product.price,
-      "priceCurrency": "SAR",
+      "price": product.price || 0,
+      "priceCurrency": "EGP",
       "availability": "https://schema.org/InStock"
     }
   }
@@ -102,17 +101,37 @@ const ProductDetails = () => {
         </nav>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-          {/* Product Image */}
-          <div className="bg-white rounded-xl shadow-lg p-6">
-            <div className="relative bg-gray-100 rounded-lg overflow-hidden h-96">
-              <img 
-                src={product.image} 
-                alt={product.name}
-                className="w-full h-full object-cover"
-                onError={(e) => {
-                  e.target.src = '/images/placeholder.jpg'
-                }}
-              />
+          {/* Product Icon Display */}
+          <div className="bg-white rounded-xl shadow-lg p-8">
+            <div className="relative bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden h-96 flex flex-col items-center justify-center">
+              <div className="text-center">
+                <i className={`${product.icon} text-renault-blue text-8xl mb-6`}></i>
+                <div className="mt-4">
+                  <span className="inline-block bg-white/90 text-renault-blue text-sm font-bold px-4 py-2 rounded-full">
+                    {product.category}
+                  </span>
+                </div>
+              </div>
+              
+              <div className="absolute bottom-4 left-4 bg-gray-800/90 text-white text-sm px-4 py-2 rounded-lg">
+                <span className="font-mono">{product.oem}</span>
+              </div>
+              
+              <div className="absolute top-4 right-4 bg-white/90 text-gray-700 text-sm px-4 py-2 rounded-full">
+                <i className="fas fa-truck ml-2"></i>
+                <span>{product.models?.[0] || 'Renault'}</span>
+              </div>
+            </div>
+            
+            <div className="mt-6 grid grid-cols-2 gap-4">
+              <div className="text-center p-4 bg-blue-50 rounded-xl">
+                <i className="fas fa-shield-alt text-blue-600 text-2xl mb-2"></i>
+                <p className="text-sm text-gray-700">جودة عالية</p>
+              </div>
+              <div className="text-center p-4 bg-green-50 rounded-xl">
+                <i className="fas fa-check-circle text-green-600 text-2xl mb-2"></i>
+                <p className="text-sm text-gray-700">ضمان متوفر</p>
+              </div>
             </div>
           </div>
 
@@ -128,7 +147,7 @@ const ProductDetails = () => {
               {product.name}
             </h1>
 
-            <p className="text-gray-700 mb-6 leading-relaxed">
+            <p className="text-gray-700 mb-6 leading-relaxed text-lg">
               {product.description}
             </p>
 
@@ -155,39 +174,54 @@ const ProductDetails = () => {
                       key={index}
                       className="bg-renault-blue text-white px-3 py-1 rounded text-sm"
                     >
-                      {model}
+                      <i className="fas fa-truck ml-1"></i> {model}
                     </span>
                   ))}
                 </div>
+              </div>
+              
+              <div className="py-3 border-b border-gray-200">
+                <span className="text-gray-600 font-medium block mb-2">نوع القطعة:</span>
+                <span className="text-industrial-dark bg-yellow-50 px-3 py-1 rounded text-sm">
+                  {product.category.includes('أصلية') ? 'أصلية' : 'بديلة عالية الجودة'}
+                </span>
               </div>
             </div>
 
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
               <a
-                href={`https://wa.me/249999929966?text=${encodeURIComponent(whatsappMessage)}`}
+                href={`https://wa.me/201234567890?text=${encodeURIComponent(whatsappMessage)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex-1 bg-green-600 text-white py-4 px-6 rounded-lg font-bold hover:bg-green-700 transition-colors text-center flex items-center justify-center space-x-2 space-x-reverse"
               >
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.495 3.59"/>
-                </svg>
-                <span>اطلب عبر واتساب</span>
+                <i className="fab fa-whatsapp text-2xl"></i>
+                <span className="text-lg">اطلب عبر واتساب</span>
               </a>
               
               <Link
                 to="/products"
-                className="flex-1 bg-industrial-dark text-white py-4 px-6 rounded-lg font-bold hover:bg-gray-800 transition-colors text-center"
+                className="flex-1 bg-industrial-dark text-white py-4 px-6 rounded-lg font-bold hover:bg-gray-800 transition-colors text-center flex items-center justify-center space-x-2 space-x-reverse"
               >
-                العودة للمنتجات
+                <i className="fas fa-arrow-right text-lg"></i>
+                <span className="text-lg">العودة للمنتجات</span>
               </Link>
+            </div>
+            
+            {/* Quick Info */}
+            <div className="mt-6 grid grid-cols-2 gap-3">
+              <div className="bg-gray-50 p-3 rounded-lg text-center">
+                <i className="fas fa-shipping-fast text-renault-blue text-lg mb-1"></i>
+                <p className="text-xs text-gray-600">توصيل سريع</p>
+              </div>
+              <div className="bg-gray-50 p-3 rounded-lg text-center">
+                <i className="fas fa-headset text-renault-blue text-lg mb-1"></i>
+                <p className="text-xs text-gray-600">دعم فني</p>
+              </div>
             </div>
           </div>
         </div>
-
-        {/* Adsense */}
-        <AdsensePlaceholder type="rectangle" />
 
         {/* Related Products */}
         <section className="mb-12">
@@ -199,13 +233,13 @@ const ProductDetails = () => {
               .filter(p => p.category === product.category && p.id !== product.id)
               .slice(0, 4)
               .map(relatedProduct => (
-                <div key={relatedProduct.id} className="bg-white rounded-xl shadow-lg p-4 hover:shadow-xl transition-shadow">
-                  <div className="bg-gray-100 rounded-lg h-32 mb-4 overflow-hidden">
-                    <img 
-                      src={relatedProduct.image} 
-                      alt={relatedProduct.name}
-                      className="w-full h-full object-cover"
-                    />
+                <Link 
+                  key={relatedProduct.id} 
+                  to={`/product/${relatedProduct.id}`}
+                  className="bg-white rounded-xl shadow-lg p-4 hover:shadow-xl transition-shadow"
+                >
+                  <div className="bg-gradient-to-r from-gray-100 to-gray-200 rounded-lg h-32 mb-4 flex items-center justify-center">
+                    <i className={`${relatedProduct.icon} text-renault-blue text-5xl`}></i>
                   </div>
                   <h3 className="font-bold text-industrial-dark mb-2 line-clamp-2">
                     {relatedProduct.name}
@@ -214,14 +248,11 @@ const ProductDetails = () => {
                     <span className="text-renault-blue font-bold">
                       {formatPrice(relatedProduct.price)}
                     </span>
-                    <Link
-                      to={`/product/${relatedProduct.id}`}
-                      className="text-industrial-yellow hover:text-yellow-600 transition-colors"
-                    >
-                      التفاصيل →
-                    </Link>
+                    <span className="text-industrial-yellow hover:text-yellow-600 transition-colors text-sm">
+                      التفاصيل <i className="fas fa-arrow-left"></i>
+                    </span>
                   </div>
-                </div>
+                </Link>
               ))}
           </div>
         </section>
@@ -235,39 +266,79 @@ const ProductDetails = () => {
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div>
-                <h3 className="font-bold text-industrial-dark mb-3">مواصفات المنتج</h3>
+                <h3 className="font-bold text-industrial-dark mb-3">
+                  <i className="fas fa-cogs ml-2"></i>
+                  مواصفات المنتج
+                </h3>
                 <ul className="text-gray-700 space-y-2 text-sm">
-                  <li>• الرقم الأصلي: {product.oem}</li>
-                  <li>• الفئة: {product.category}</li>
-                  <li>• الموديلات المتوافقة: {product.models.join('، ')}</li>
-                  <li>• الجودة: أصلية / بديلة عالية الجودة</li>
-                  <li>• الضمان: متوفر حسب نوع القطعة</li>
+                  <li className="flex items-center">
+                    <i className="fas fa-hashtag text-renault-blue ml-2"></i>
+                    <span>الرقم الأصلي: <strong>{product.oem}</strong></span>
+                  </li>
+                  <li className="flex items-center">
+                    <i className="fas fa-tag text-renault-blue ml-2"></i>
+                    <span>الفئة: <strong>{product.category}</strong></span>
+                  </li>
+                  <li className="flex items-center">
+                    <i className="fas fa-truck text-renault-blue ml-2"></i>
+                    <span>الموديلات المتوافقة: <strong>{product.models.join('، ')}</strong></span>
+                  </li>
+                  <li className="flex items-center">
+                    <i className="fas fa-certificate text-renault-blue ml-2"></i>
+                    <span>الجودة: <strong>{product.description.includes('أصلي') ? 'أصلية' : 'بديلة عالية الجودة'}</strong></span>
+                  </li>
+                  <li className="flex items-center">
+                    <i className="fas fa-shield-alt text-renault-blue ml-2"></i>
+                    <span>الضمان: <strong>متوفر حسب نوع القطعة</strong></span>
+                  </li>
                 </ul>
               </div>
               
               <div>
-                <h3 className="font-bold text-industrial-dark mb-3">معلومات الشحن والتوصيل</h3>
+                <h3 className="font-bold text-industrial-dark mb-3">
+                  <i className="fas fa-shipping-fast ml-2"></i>
+                  معلومات الشحن والتوصيل
+                </h3>
                 <ul className="text-gray-700 space-y-2 text-sm">
-                  <li>• مدة التوصيل: 24-48 ساعة</li>
-                  <li>• مناطق التوصيل: جميع أنحاء المملكة</li>
-                  <li>• تكلفة الشحن: مجانية للطلبات فوق 5000 ريال</li>
-                  <li>• الدفع: نقدًا عند الاستلام أو تحويل بنكي</li>
+                  <li className="flex items-center">
+                    <i className="fas fa-clock text-renault-blue ml-2"></i>
+                    <span>مدة التوصيل: <strong>2-4 ساعات داخل القاهرة</strong></span>
+                  </li>
+                  <li className="flex items-center">
+                    <i className="fas fa-map-marker-alt text-renault-blue ml-2"></i>
+                    <span>مناطق التوصيل: <strong>جميع أنحاء مصر</strong></span>
+                  </li>
+                  <li className="flex items-center">
+                    <i className="fas fa-truck text-renault-blue ml-2"></i>
+                    <span>تكلفة الشحن: <strong>مجانية داخل القاهرة الكبرى</strong></span>
+                  </li>
+                  <li className="flex items-center">
+                    <i className="fas fa-money-bill-wave text-renault-blue ml-2"></i>
+                    <span>الدفع: <strong>نقدًا عند الاستلام أو تحويل بنكي</strong></span>
+                  </li>
                 </ul>
               </div>
             </div>
 
-            <div className="mt-8 p-4 bg-blue-50 rounded-lg border border-blue-200">
-              <h4 className="font-bold text-blue-900 mb-2">💡 ملاحظة فنية:</h4>
-              <p className="text-blue-800 text-sm">
-                لضمان التركيب الصحيح والأداء الأمثل، نوصي بتركيب القطعة من قبل فني متخصص. 
-                يتوفر لدينا دعم فني عبر الهاتف والواتساب للإجابة على استفساراتكم الفنية.
-              </p>
+            <div className="mt-8 p-6 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl border border-blue-200">
+              <div className="flex items-start">
+                <div className="bg-renault-blue text-white p-3 rounded-full mr-4">
+                  <i className="fas fa-lightbulb text-xl"></i>
+                </div>
+                <div>
+                  <h4 className="font-bold text-blue-900 mb-2 text-lg">
+                    ملاحظة فنية مهمة
+                  </h4>
+                  <p className="text-blue-800">
+                    لضمان التركيب الصحيح والأداء الأمثل، نوصي بتركيب القطعة من قبل فني متخصص. 
+                    يتوفر لدينا دعم فني عبر الهاتف والواتساب للإجابة على استفساراتكم الفنية.
+                    كما نوفر خدمة تركيب مجانية للقطع الكبيرة داخل القاهرة الكبرى.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-
-        {/* Final Adsense */}
-        <AdsensePlaceholder />
       </div>
     </div>
   )

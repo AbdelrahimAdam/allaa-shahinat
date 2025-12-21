@@ -5,32 +5,15 @@ import { useScrollToTop } from '../hooks/useScrollToTop'
 const ProductCard = ({ product }) => {
   const { scrollToTop } = useScrollToTop()
 
-  const formatPrice = (price) => {
-    return new Intl.NumberFormat('ar-SA', {
-      style: 'currency',
-      currency: 'SAR'
-    }).format(price)
-  }
-
   const handleDetailsClick = () => {
     scrollToTop()
   }
 
   return (
     <div className="bg-white rounded-xl shadow-lg industrial-shadow hover:shadow-xl transition-all duration-300 border border-gray-200 overflow-hidden group">
-      {/* Product Image */}
-      <div className="relative overflow-hidden bg-gray-100 h-48">
-        <img 
-          src={product.image} 
-          alt={product.name}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-          onError={(e) => {
-            e.target.src = '/images/placeholder.jpg'
-          }}
-        />
-        <div className="absolute top-3 left-3 bg-industrial-yellow text-industrial-dark px-2 py-1 rounded text-sm font-bold">
-          {formatPrice(product.price)}
-        </div>
+      {/* Product Icon */}
+      <div className="relative flex items-center justify-center bg-gray-100 h-48 sm:h-56">
+        <i className={`${product.icon} text-6xl sm:text-7xl text-renault-blue`}></i>
       </div>
 
       {/* Product Info */}
@@ -38,7 +21,7 @@ const ProductCard = ({ product }) => {
         <h3 className="font-bold text-lg text-industrial-dark mb-2 line-clamp-2 h-14">
           {product.name}
         </h3>
-        
+
         <div className="space-y-2 mb-4">
           <div className="flex justify-between items-center text-sm">
             <span className="text-gray-600">الرقم الأصلي:</span>
@@ -46,12 +29,12 @@ const ProductCard = ({ product }) => {
               {product.oem}
             </span>
           </div>
-          
+
           <div className="text-sm">
             <span className="text-gray-600">الموديلات:</span>
             <div className="flex flex-wrap gap-1 mt-1">
               {product.models.slice(0, 2).map((model, index) => (
-                <span 
+                <span
                   key={index}
                   className="bg-renault-blue text-white px-2 py-1 rounded text-xs"
                 >

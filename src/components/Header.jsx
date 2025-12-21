@@ -47,21 +47,6 @@ const Header = () => {
   return (
     <>
       <header className="industrial-gradient text-white sticky top-0 z-50 shadow-lg">
-        {/* Top Bar */}
-        <div className="bg-renault-blue py-2">
-          <div className="container mx-auto px-4">
-            <div className="flex justify-between items-center text-sm">
-              <div className="flex items-center space-x-4 space-x-reverse">
-                <span>📞 00249999929966</span>
-                <span>🕒 24/7 خدمة العملاء</span>
-              </div>
-              <div className="hidden md:flex items-center space-x-4 space-x-reverse">
-                <span>🚚 شحن سريع لجميع أنحاء المملكة</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
         {/* Main Navigation */}
         <nav className="container mx-auto px-4 py-4">
           <div className="flex justify-between items-center">
