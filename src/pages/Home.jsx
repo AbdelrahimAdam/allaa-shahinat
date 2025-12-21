@@ -59,9 +59,9 @@ const Home = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#fafafa] to-[#f0f0f0]">
-      {/* Hero Section */}
-      <section className="relative bg-[#1a1a1a] text-white overflow-hidden">
-        <div className="relative h-[60vh] md:h-[70vh] lg:h-[85vh]">
+      {/* Hero Section - Adjusted with proper spacing */}
+      <section className="relative bg-[#1a1a1a] text-white overflow-hidden pb-8 md:pb-0">
+        <div className="relative h-auto md:h-[70vh] lg:h-[85vh] pt-20 md:pt-0">
           <div 
             className="absolute inset-0 bg-cover bg-center"
             style={{ 
@@ -72,10 +72,10 @@ const Home = () => {
             <div className="absolute inset-0 bg-gradient-to-b from-[#1a1a1a]/90 via-[#1a1a1a]/80 to-[#1a1a1a]/90"></div>
           </div>
           
-          <div className="container mx-auto px-4 h-full flex items-center relative z-10">
+          <div className="container mx-auto px-4 h-full flex items-center relative z-10 py-12 md:py-0">
             <div className="w-full max-w-6xl mx-auto">
               <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-center">
-                <div className="lg:w-1/2 text-center lg:text-right">
+                <div className="lg:w-1/2 text-center lg:text-right mb-8 md:mb-0">
                   <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 lg:mb-6 leading-tight font-['Tajawal','sans-serif']">
                     علا الدين شاحنات
                   </h1>
@@ -91,8 +91,9 @@ const Home = () => {
                   </Link>
                 </div>
 
-                <div className="lg:w-1/2 w-full">
-                  <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-2 gap-4 md:gap-6">
+                {/* Feature Cards Grid - Positioned properly for mobile */}
+                <div className="lg:w-1/2 w-full relative z-20">
+                  <div className="grid grid-cols-2 gap-3 sm:gap-4 md:gap-6 relative -top-6 sm:top-0">
                     {[
                       { icon: 'fa-solid fa-industry', title: 'جودة أصلية', desc: 'قطع غيار معتمدة من رينو' },
                       { icon: 'fa-solid fa-truck-fast', title: 'شحن سريع', desc: 'توصيل في جميع أنحاء المملكة' },
@@ -101,7 +102,7 @@ const Home = () => {
                     ].map((f, i) => (
                       <div 
                         key={i} 
-                        className="bg-white/10 backdrop-blur-sm border border-white/20 p-4 md:p-6 rounded-2xl text-center hover:bg-white/15 transition-all duration-300 hover:border-[#FFD700]/30"
+                        className="bg-white/10 backdrop-blur-sm border border-white/20 p-4 md:p-6 rounded-2xl text-center hover:bg-white/15 transition-all duration-300 hover:border-[#FFD700]/30 shadow-lg md:shadow-xl h-full min-h-[140px] sm:min-h-[160px] flex flex-col justify-center"
                       >
                         <i className={`${f.icon} text-2xl md:text-3xl mb-3 text-[#FFD700]`}></i>
                         <h3 className="font-bold text-sm md:text-base mb-1 font-['Tajawal','sans-serif']">{f.title}</h3>
@@ -114,6 +115,7 @@ const Home = () => {
             </div>
           </div>
           
+          {/* Scroll indicator - positioned properly */}
           <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 hidden md:block">
             <div className="animate-bounce">
               <i className="fa-solid fa-chevron-down text-[#FFD700] text-2xl"></i>
@@ -122,8 +124,8 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Categories Section - Fixed for mobile */}
-      <section className="py-12 md:py-20 bg-gradient-to-b from-white to-[#f8f8f8]">
+      {/* Categories Section - Adjusted spacing */}
+      <section className="py-12 md:py-20 bg-gradient-to-b from-white to-[#f8f8f8] mt-0 md:mt-0">
         <div className="container mx-auto px-4">
           <div className="text-center mb-10 md:mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1a1a1a] mb-4 font-['Tajawal','sans-serif']">
@@ -139,7 +141,7 @@ const Home = () => {
               <Link 
                 key={cat.name} 
                 to={`/products?category=${encodeURIComponent(cat.name)}`}
-                className="group bg-white border border-[#e0e0e0] rounded-2xl p-6 md:p-8 text-center hover:shadow-2xl hover:border-[#FFD700]/30 transition-all duration-300 transform hover:-translate-y-2 overflow-hidden"
+                className="group bg-white border border-[#e0e0e0] rounded-2xl p-6 md:p-8 text-center hover:shadow-2xl hover:border-[#FFD700]/30 transition-all duration-300 transform hover:-translate-y-2 overflow-hidden shadow-sm"
               >
                 <div className="relative inline-flex justify-center items-center mb-4 md:mb-6">
                   <div className="absolute w-16 h-16 md:w-20 md:h-20 bg-[#0052A1]/10 rounded-full group-hover:scale-110 transition-transform duration-300"></div>
@@ -161,7 +163,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Featured Products Section - Fixed for mobile */}
+      {/* Featured Products Section */}
       <section className="py-12 md:py-20 bg-gradient-to-b from-[#f8f8f8] to-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-10 md:mb-16">
@@ -173,7 +175,6 @@ const Home = () => {
             </p>
           </div>
           
-          {/* Grid with improved mobile display */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
             {featuredProducts.map(product => (
               <div 
@@ -197,7 +198,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Call to Action Banner - Fixed for mobile */}
+      {/* Call to Action Banner */}
       <section className="py-12 md:py-16 bg-gradient-to-r from-[#1a1a1a] to-[#0052A1] text-white overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
