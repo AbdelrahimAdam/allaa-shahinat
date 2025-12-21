@@ -12,38 +12,52 @@ const ProductCard = ({ product }) => {
   return (
     <div className="bg-white rounded-xl shadow-lg industrial-shadow hover:shadow-xl transition-all duration-300 border border-gray-200 overflow-hidden group">
       {/* Product Icon */}
-      <div className="relative flex items-center justify-center bg-gray-100 h-48 sm:h-56">
-        <i className={`${product.icon} text-6xl sm:text-7xl text-renault-blue`}></i>
+      <div className="relative flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200 h-48 sm:h-56">
+        <i className={`${product.icon} text-5xl sm:text-6xl text-renault-blue`}></i>
+        
+        {/* Category Badge */}
+        <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-renault-blue text-xs font-bold px-3 py-1 rounded-full border border-renault-blue/20">
+          {product.category}
+        </div>
+        
+        {/* OEM Badge */}
+        <div className="absolute top-3 right-3 bg-gray-800/90 text-white text-xs font-mono px-2 py-1 rounded-lg">
+          {product.oem}
+        </div>
       </div>
 
       {/* Product Info */}
-      <div className="p-4">
-        <h3 className="font-bold text-lg text-industrial-dark mb-2 line-clamp-2 h-14">
+      <div className="p-5">
+        <h3 className="font-bold text-lg text-industrial-dark mb-3 line-clamp-2 h-14">
           {product.name}
         </h3>
 
-        <div className="space-y-2 mb-4">
+        <p className="text-gray-600 text-sm mb-4 line-clamp-2 h-10">
+          {product.description}
+        </p>
+
+        <div className="space-y-3 mb-6">
           <div className="flex justify-between items-center text-sm">
-            <span className="text-gray-600">الرقم الأصلي:</span>
-            <span className="font-mono text-industrial-dark bg-gray-100 px-2 py-1 rounded">
+            <span className="text-gray-600 font-medium">الرقم الأصلي:</span>
+            <span className="font-mono font-bold text-renault-blue bg-blue-50 px-3 py-1 rounded-lg border border-blue-100">
               {product.oem}
             </span>
           </div>
 
           <div className="text-sm">
-            <span className="text-gray-600">الموديلات:</span>
-            <div className="flex flex-wrap gap-1 mt-1">
-              {product.models.slice(0, 2).map((model, index) => (
+            <span className="text-gray-600 font-medium block mb-2">الموديلات المناسبة:</span>
+            <div className="flex flex-wrap gap-2">
+              {product.models.slice(0, 3).map((model, index) => (
                 <span
                   key={index}
-                  className="bg-renault-blue text-white px-2 py-1 rounded text-xs"
+                  className="bg-renault-blue/10 text-renault-blue px-3 py-1 rounded-lg text-xs font-medium border border-renault-blue/20"
                 >
                   {model}
                 </span>
               ))}
-              {product.models.length > 2 && (
-                <span className="bg-gray-200 text-gray-600 px-2 py-1 rounded text-xs">
-                  +{product.models.length - 2}
+              {product.models.length > 3 && (
+                <span className="bg-gray-100 text-gray-600 px-3 py-1 rounded-lg text-xs font-medium">
+                  +{product.models.length - 3}
                 </span>
               )}
             </div>
@@ -51,19 +65,21 @@ const ProductCard = ({ product }) => {
         </div>
 
         {/* Actions */}
-        <div className="flex space-x-2 space-x-reverse">
+        <div className="flex gap-3">
           <Link
             to={`/product/${product.id}`}
             onClick={handleDetailsClick}
-            className="flex-1 bg-industrial-dark text-white py-2 px-4 rounded-lg text-center font-medium hover:bg-renault-blue transition-colors"
+            className="flex-1 bg-renault-blue hover:bg-blue-700 text-white py-3 px-4 rounded-xl text-center font-bold transition-all duration-300 flex items-center justify-center gap-2 group/btn"
           >
-            التفاصيل
+            <span>التفاصيل</span>
+            <i className="fas fa-arrow-left text-sm group-hover/btn:translate-x-1 transition-transform"></i>
           </Link>
+          
           <a
-            href={`https://wa.me/249999929966?text=أريد+تفاصيل+حول:+${encodeURIComponent(product.name)}`}
+            href={`https://wa.me/201000000000?text=مرحباً، أريد الاستفسار عن المنتج: ${encodeURIComponent(product.name)} - OEM: ${product.oem}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-green-600 text-white p-2 rounded-lg hover:bg-green-700 transition-colors"
+            className="bg-[#25D366] hover:bg-green-600 text-white p-3 rounded-xl transition-all duration-300 flex items-center justify-center"
             title="تواصل عبر واتساب"
           >
             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
