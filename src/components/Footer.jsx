@@ -1,23 +1,18 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useScrollToTop } from '../hooks/useScrollToTop'
+import productsData from '../data/products.json'
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
   const { scrollToTop } = useScrollToTop()
   
-  const categories = [
-    'قطع الدفرنس',
-    'أكس كامل', 
-    'نظام التعليق',
-    'قطع المحرك',
-    'قطع القير',
-    'نظام الفرامل',
-    'الكهرباء',
-    'نظام التبريد',
-    'مستهلكات',
-    'إكسسوارات'
-  ]
+  // Get unique categories from products.json
+  const uniqueCategories = [...new Set(productsData.map(product => product.category))]
+  
+  // Split categories into two arrays for two columns
+  const categoriesColumn1 = uniqueCategories.slice(0, Math.ceil(uniqueCategories.length / 2))
+  const categoriesColumn2 = uniqueCategories.slice(Math.ceil(uniqueCategories.length / 2))
 
   return (
     <footer className="industrial-gradient text-white">
@@ -38,7 +33,7 @@ const Footer = () => {
             </div>
             <p className="text-gray-300 mb-4 leading-relaxed">
               نحن المتخصصون الرائدون في توريد قطع غيار شاحنات رينو بجودة عالية وأسعار تنافسية. 
-              خبرة طويلة في مجال قطع غيار الشاحنات الثقيلة.
+              خبرة طويلة في مجال قطع غيار الشاحنات الثقيلة في مصر.
             </p>
             <div className="flex space-x-4 space-x-reverse">
               <a href="https://facebook.com" className="text-gray-300 hover:text-industrial-yellow transition-colors">
@@ -62,22 +57,39 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Categories */}
+          {/* Categories - Column 1 */}
           <div>
             <h4 className="text-lg font-bold mb-4 text-industrial-yellow">الأقسام</h4>
-            <ul className="space-y-2">
-              {categories.map((category) => (
-                <li key={category}>
-                  <Link 
-                    to={`/products?category=${encodeURIComponent(category)}`}
-                    onClick={scrollToTop}
-                    className="text-gray-300 hover:text-white transition-colors"
-                  >
-                    {category}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            <div className="grid grid-cols-2 gap-4">
+              <ul className="space-y-2">
+                {categoriesColumn1.map((category) => (
+                  <li key={category}>
+                    <Link 
+                      to={`/products?category=${encodeURIComponent(category)}`}
+                      onClick={scrollToTop}
+                      className="text-gray-300 hover:text-white transition-colors text-sm"
+                    >
+                      {category}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+              
+              {/* Categories - Column 2 */}
+              <ul className="space-y-2">
+                {categoriesColumn2.map((category) => (
+                  <li key={category}>
+                    <Link 
+                      to={`/products?category=${encodeURIComponent(category)}`}
+                      onClick={scrollToTop}
+                      className="text-gray-300 hover:text-white transition-colors text-sm"
+                    >
+                      {category}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
 
           {/* Contact Info */}
@@ -90,7 +102,10 @@ const Footer = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                   </svg>
                 </div>
-                <span className="text-gray-300">00249999929966</span>
+                <div>
+                  <span className="text-gray-300 block">+20 100 000 0000</span>
+                  <span className="text-gray-300 block text-sm">+20 200 000 0000</span>
+                </div>
               </div>
               <div className="flex items-center space-x-3 space-x-reverse">
                 <div className="w-8 h-8 bg-renault-blue rounded-full flex items-center justify-center">
@@ -107,7 +122,15 @@ const Footer = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
                 </div>
-                <span className="text-gray-300">المملكة العربية السعودية</span>
+                <span className="text-gray-300">القاهرة، مصر</span>
+              </div>
+              <div className="flex items-center space-x-3 space-x-reverse">
+                <div className="w-8 h-8 bg-renault-blue rounded-full flex items-center justify-center">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <span className="text-gray-300">الأحد - الخميس: 9 ص - 5 م</span>
               </div>
             </div>
           </div>
