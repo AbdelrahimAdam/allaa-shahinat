@@ -77,10 +77,10 @@ const Home = () => {
               <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-center">
                 <div className="lg:w-1/2 text-center lg:text-right mb-8 md:mb-0">
                   <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 lg:mb-6 leading-tight font-['Tajawal','sans-serif']">
-                    علا الدين شاحنات
+                    علاء الدين شاحنات
                   </h1>
                   <p className="text-lg md:text-xl mb-6 lg:mb-8 text-gray-200 max-w-xl mx-auto lg:mx-0 lg:mr-auto font-light tracking-wide">
-                    قطع غيار شاحنات رينو الأصلية والمعتمدة لجميع الموديلات
+                    قطع غيار شاحنات رينو الأصليه والمعتمده لجميع الموديلات
                   </p>
                   <Link 
                     to="/products" 
@@ -95,7 +95,7 @@ const Home = () => {
                 <div className="lg:w-1/2 w-full relative z-20">
                   <div className="grid grid-cols-2 gap-3 sm:gap-4 md:gap-6 relative -top-6 sm:top-0">
                     {[
-                      { icon: 'fa-solid fa-industry', title: 'جودة أصلية', desc: 'قطع غيار معتمدة من رينو' },
+                      { icon: 'fa-solid fa-industry', title: 'جوده أصلية', desc: 'قطع غيار معتمده من رينو' },
                       { icon: 'fa-solid fa-truck-fast', title: 'شحن سريع', desc: 'توصيل في جميع أنحاء المملكة' },
                       { icon: 'fa-solid fa-gem', title: 'أسعار تنافسية', desc: 'أفضل الأسعار في السوق' },
                       { icon: 'fa-solid fa-screwdriver-wrench', title: 'دعم فني', desc: 'استشارات فنية مجانية' }
