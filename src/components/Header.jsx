@@ -60,7 +60,7 @@ const Header = () => {
                 <span className="text-industrial-dark font-bold text-xl">ع</span>
               </div>
               <div>
-                <h1 className="text-xl font-bold">علا الدين شاحنات</h1>
+                <h1 className="text-xl font-bold">علاء الدين شاحنات</h1>
                 <p className="text-industrial-yellow text-sm">قطع غيار أصلية</p>
               </div>
             </Link>
