@@ -32,7 +32,7 @@ const Contact = () => {
     {
       name: 'فيسبوك',
       icon: 'fab fa-facebook-f',
-      link: 'https://facebook.com',
+      link: 'https://www.facebook.com/share/1G3KE3nrq4/',
       color: 'bg-blue-600'
     },
     {
@@ -44,7 +44,7 @@ const Contact = () => {
     {
       name: 'انستقرام',
       icon: 'fab fa-instagram',
-      link: 'https://instagram.com',
+      link: 'https://www.instagram.com/renaulttrucks9?igsh=MTZ0d3o1dW00bjN1NA==',
       color: 'bg-pink-600'
     }
   ]
