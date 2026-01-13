@@ -5,6 +5,28 @@
     <link rel="icon" type="image/svg+xml" href="/truck-icon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- Google Search Console Verification -->
+    <meta name="google-site-verification" content="google443a1b564242f731" />
+
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="علا الدين شاحنات - قطع غيار شاحنات رينو الأصليه">
+    <meta property="og:description" content="نحن متخصصون في توريد جميع أنواع قطع غيار شاحنات رينو الأصلية والبديلة">
+    <meta property="og:image" content="https://renault-trucks-parts.com/og-image.jpg">
+    <meta property="og:url" content="https://renault-trucks-parts.com">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ar_SA">
+    <meta property="og:site_name" content="علا الدين شاحنات">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="علا الدين شاحنات - قطع غيار شاحنات رينو الأصليه">
+    <meta name="twitter:description" content="قطع غيار أصلية لشاحنات رينو">
+    <meta name="twitter:image" content="https://renault-trucks-parts.com/twitter-image.jpg">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://renault-trucks-parts.com">
+
+    <!-- Meta Description -->
     <meta
       name="description"
       content="نحن متخصصون في توريد جميع أنواع قطع غيار شاحنات رينو الأصلية والبديلة، بما في ذلك الدفرنس، الأكس الكامل، مساعدات الهواء، قطع المحرك، القير، الفرامل، والتبريد. جميع القطع متوافقة مع شاحنات Renault Premium و Kerax و Midlum و Magnum."
@@ -14,6 +36,14 @@
       content="قطع غيار رينو, شاحنات رينو, دفرنس رينو, أكس رينو, مساعدات هواء رينو, قطع محرك رينو, قير رينو, فرامل رينو"
     />
 
+    <!-- إضافات SEO -->
+    <meta name="author" content="علا الدين شاحنات">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow">
+    <meta name="bingbot" content="index, follow">
+    <meta name="geo.region" content="SA">
+    <meta name="geo.placename" content="Saudi Arabia">
+
     <title>علا الدين شاحنات - قطع غيار شاحنات رينو الأصليه</title>
 
     <!-- Arabic Font -->
@@ -22,7 +52,7 @@
       rel="stylesheet"
     />
 
-    <!-- ✅ Font Awesome 6 (REQUIRED FOR YOUR ICONS) -->
+    <!-- ✅ Font Awesome 6 -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -37,20 +67,44 @@
       crossorigin="anonymous"
     ></script>
 
+    <!-- Google Analytics (اختياري) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+
     <!-- Schema.org JSON-LD -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "AutoPartsStore",
-        "name": "علا الدين شاحنات - قطع غيار شاحنات رينو",
-        "description": "متخصصون في توريد قطع غيار شاحنات رينو الأصليه والبديله",
-        "url": "https://renault-trucks-parts.com",
-        "telephone": "+249-999-929966",
-        "address": {
-          "@type": "PostalAddress",
-          "addressCountry": "SA"
-        },
-        "openingHours": "Mo-Su 08:00-22:00"
+        "@graph": [
+          {
+            "@type": "AutoPartsStore",
+            "@id": "https://renault-trucks-parts.com/#store",
+            "name": "علا الدين شاحنات - قطع غيار شاحنات رينو",
+            "description": "متخصصون في توريد قطع غيار شاحنات رينو الأصليه والبديله",
+            "url": "https://renault-trucks-parts.com",
+            "telephone": "+249-999-929966",
+            "address": {
+              "@type": "PostalAddress",
+              "addressCountry": "SA"
+            },
+            "openingHours": "Mo-Su 08:00-22:00"
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://renault-trucks-parts.com/#website",
+            "url": "https://renault-trucks-parts.com",
+            "name": "علا الدين شاحنات",
+            "description": "قطع غيار شاحنات رينو الأصلية",
+            "publisher": {
+              "@id": "https://renault-trucks-parts.com/#store"
+            }
+          }
+        ]
       }
     </script>
   </head>
