@@ -38,7 +38,7 @@ const Contact = () => {
     {
       name: 'يوتيوب',
       icon: 'fab fa-youtube',
-      link: 'https://youtube.com',
+      link: 'https://www.youtube.com/@aladin-trucks',
       color: 'bg-red-600'
     },
     {
