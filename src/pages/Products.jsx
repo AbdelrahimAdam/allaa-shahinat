@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from 'react'
 import { useSearchParams, Link } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async' // ADD THIS
 import productsData from '../data/products.json'
 
 /* =========================
@@ -169,82 +170,124 @@ const Products = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white py-8">
-      <div className="container mx-auto px-4">
-        {/* Header */}
-        <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center p-4 bg-gradient-to-r from-renault-blue to-blue-600 rounded-2xl mb-4 shadow-lg">
-            <i className="fas fa-truck-moving text-white text-4xl" />
-          </div>
-          <h1 className="text-3xl md:text-4xl font-bold text-industrial-dark mb-4">
-            معرض قطع غيار رينو
-          </h1>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-            اكتشف مجموعتنا الكاملة من قطع غيار شاحنات رينو
-          </p>
-        </div>
+    <>
+      {/* ADD HELMET WITH SEO TAGS */}
+      <Helmet>
+        <title>معرض قطع غيار رينو - منتجات أصلية لشاحنات رينو</title>
+        <meta name="description" content="تصفح كتالوج قطع غيار شاحنات رينو الأصلية. دفرنس، أكس كامل، قطع محرك، نظام فرامل، كهرباء، تبريد، وإكسسوارات. البحث حسب النوع والمواصفات." />
+        <meta name="keywords" content="قطع غيار رينو للبيع, كتالوج قطع غيار رينو, دفرنس رينو, أكس رينو, فرامل رينو, قطع محرك رينو, منتجات رينو, البحث عن قطع غيار" />
+        <link rel="canonical" href="https://renault-trucks-parts.com/products" />
+        
+        {/* Open Graph */}
+        <meta property="og:title" content="معرض قطع غيار رينو - منتجات أصلية" />
+        <meta property="og:description" content="كتالوج كامل لقطع غيار شاحنات رينو الأصلية والبديلة" />
+        <meta property="og:url" content="https://renault-trucks-parts.com/products" />
+        <meta property="og:type" content="website" />
+        
+        {/* Structured Data for Product Collection */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            "name": "معرض قطع غيار رينو",
+            "description": "مجموعة كاملة من قطع غيار شاحنات رينو الأصلية",
+            "url": "https://renault-trucks-parts.com/products",
+            "mainEntity": {
+              "@type": "ItemList",
+              "numberOfItems": filteredProducts.length,
+              "itemListElement": filteredProducts.slice(0, 10).map((product, index) => ({
+                "@type": "ListItem",
+                "position": index + 1,
+                "item": {
+                  "@type": "Product",
+                  "name": product.name,
+                  "description": product.description,
+                  "url": `https://renault-trucks-parts.com/product/${product.id}`
+                }
+              }))
+            }
+          })}
+        </script>
+      </Helmet>
 
-        {/* Search */}
-        <div className="bg-white rounded-2xl shadow-lg p-6 mb-8 border border-gray-100">
-          <div className="relative">
-            <input
-              type="text"
-              placeholder="ابحث بالاسم، رقم OEM، أو الوصف..."
-              value={searchTerm}
-              onChange={e => setSearchTerm(e.target.value)}
-              className="w-full px-4 py-3 pr-12 border-2 border-gray-200 rounded-xl focus:border-renault-blue focus:ring-2 focus:ring-renault-blue/20 transition-all"
-            />
-            <i className="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
-            {searchTerm && (
-              <button
-                onClick={() => setSearchTerm('')}
-                className="absolute left-12 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
-              >
-                <i className="fas fa-times"></i>
-              </button>
-            )}
-          </div>
-          <p className="text-gray-500 text-sm mt-3 flex items-center gap-2">
-            <i className="fas fa-info-circle"></i>
-            {filteredProducts.length} منتج متوفر
-          </p>
-        </div>
-
-        <CategoryFilter
-          selectedCategory={selectedCategory}
-          onCategoryChange={handleCategoryChange}
-        />
-
-        {/* Products Grid */}
-        {filteredProducts.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {filteredProducts.map(product => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
-        ) : (
-          <div className="text-center py-16 bg-white rounded-2xl shadow-lg border border-gray-100">
-            <i className="fas fa-search text-6xl text-gray-300 mb-4" />
-            <h3 className="text-2xl font-bold mb-4 text-gray-700">
-              لم نعثر على منتجات
-            </h3>
-            <p className="text-gray-500 mb-6 max-w-md mx-auto">
-              حاول تغيير كلمات البحث أو اختر قسم مختلف
+      {/* YOUR EXISTING CODE CONTINUES HERE (NO CHANGES BELOW) */}
+      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white py-8">
+        <div className="container mx-auto px-4">
+          {/* Header */}
+          <div className="text-center mb-8">
+            <div className="inline-flex items-center justify-center p-4 bg-gradient-to-r from-renault-blue to-blue-600 rounded-2xl mb-4 shadow-lg">
+              <i className="fas fa-truck-moving text-white text-4xl" />
+            </div>
+            <h1 className="text-3xl md:text-4xl font-bold text-industrial-dark mb-4">
+              معرض قطع غيار رينو
+            </h1>
+            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+              اكتشف مجموعتنا الكاملة من قطع غيار شاحنات رينو
             </p>
-            <button
-              onClick={() => {
-                setSearchTerm('')
-                setSelectedCategory('جميع الأقسام')
-                setSearchParams({})
-              }}
-              className="bg-renault-blue hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-bold transition-colors shadow-md hover:shadow-lg"
-            >
-              عرض جميع المنتجات
-            </button>
           </div>
-        )}
+
+          {/* Search */}
+          <div className="bg-white rounded-2xl shadow-lg p-6 mb-8 border border-gray-100">
+            <div className="relative">
+              <input
+                type="text"
+                placeholder="ابحث بالاسم، رقم OEM، أو الوصف..."
+                value={searchTerm}
+                onChange={e => setSearchTerm(e.target.value)}
+                className="w-full px-4 py-3 pr-12 border-2 border-gray-200 rounded-xl focus:border-renault-blue focus:ring-2 focus:ring-renault-blue/20 transition-all"
+              />
+              <i className="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
+              {searchTerm && (
+                <button
+                  onClick={() => setSearchTerm('')}
+                  className="absolute left-12 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                >
+                  <i className="fas fa-times"></i>
+                </button>
+              )}
+            </div>
+            <p className="text-gray-500 text-sm mt-3 flex items-center gap-2">
+              <i className="fas fa-info-circle"></i>
+              {filteredProducts.length} منتج متوفر
+            </p>
+          </div>
+
+          <CategoryFilter
+            selectedCategory={selectedCategory}
+            onCategoryChange={handleCategoryChange}
+          />
+
+          {/* Products Grid */}
+          {filteredProducts.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              {filteredProducts.map(product => (
+                <ProductCard key={product.id} product={product} />
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-16 bg-white rounded-2xl shadow-lg border border-gray-100">
+              <i className="fas fa-search text-6xl text-gray-300 mb-4" />
+              <h3 className="text-2xl font-bold mb-4 text-gray-700">
+                لم نعثر على منتجات
+              </h3>
+              <p className="text-gray-500 mb-6 max-w-md mx-auto">
+                حاول تغيير كلمات البحث أو اختر قسم مختلف
+              </p>
+              <button
+                onClick={() => {
+                  setSearchTerm('')
+                  setSelectedCategory('جميع الأقسام')
+                  setSearchParams({})
+                }}
+                className="bg-renault-blue hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-bold transition-colors shadow-md hover:shadow-lg"
+              >
+                عرض جميع المنتجات
+              </button>
+            </div>
+          )}
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 
