@@ -11,7 +11,7 @@ import Contact from './pages/Contact'
 
 function App() {
   return (
-    <HelmetProvider> {/* WRAP WITH HelmetProvider */}
+    <HelmetProvider> {/* ADD THIS WRAPPER */}
       <div className="min-h-screen bg-gray-50 flex flex-col rtl-grid">
         <ScrollToTop />
         <Header />
