@@ -1,6 +1,6 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
-import { HelmetProvider } from 'react-helmet-async' // ADD THIS
+import { HelmetProvider } from 'react-helmet-async'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import ScrollToTop from './components/ScrollToTop'
@@ -11,10 +11,12 @@ import Contact from './pages/Contact'
 
 function App() {
   return (
-    <HelmetProvider> {/* ADD THIS WRAPPER */}
+    <HelmetProvider>
+      {/* ADD THIS WRAPPER */}
       <div className="min-h-screen bg-gray-50 flex flex-col rtl-grid">
         <ScrollToTop />
         <Header />
+
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<Home />} />
@@ -23,9 +25,11 @@ function App() {
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>
+
         <Footer />
       </div>
-    </HelmetProvider> {/* CLOSE HelmetProvider */}
+      {/* CLOSE HelmetProvider */}
+    </HelmetProvider>
   )
 }
 
