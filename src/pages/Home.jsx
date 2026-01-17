@@ -1,229 +1,293 @@
-import React, { useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState, useMemo } from 'react'
+import { useSearchParams, Link } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async' // ADD THIS
 import productsData from '../data/products.json'
-import ProductCard from '../components/ProductCard'
 
-const Home = () => {
-  const featuredProducts = productsData.slice(0, 8)
+/* =========================
+   Icon Helper Function
+========================= */
+const getIconClass = (iconString) => {
+  if (!iconString) return 'fas fa-box-open';
+  
+  // Transform "fa-solid fa-gears" to "fas fa-gears" format
+  return iconString.replace('fa-solid', 'fas');
+};
 
-  const categories = [
-    {
-      name: 'قطع الدفرنس',
-      icon: 'fa-solid fa-gears',
-      count: productsData.filter(p => p.category === 'قطع الدفرنس').length,
-      description: 'تروس، كراون ويل، رولمان بلي، جوانات، هاف شفت'
-    },
-    {
-      name: 'أكس كامل',
-      icon: 'fa-solid fa-truck',
-      count: productsData.filter(p => p.category === 'أكس كامل').length,
-      description: 'أكس خلفي، أكس أمامي، علبة دفرنس كاملة، هوبات'
-    },
-    {
-      name: 'قطع المحرك',
-      icon: 'fa-solid fa-engine',
-      count: productsData.filter(p => p.category === 'قطع المحرك').length,
-      description: 'طرمبات، رأس موتور، فلاتر، جنزير، شمعات'
-    },
-    {
-      name: 'نظام الفرامل',
-      icon: 'fa-solid fa-circle-stop',
-      count: productsData.filter(p => p.category === 'نظام الفرامل').length,
-      description: 'تيل فرامل، هوبات، سليندر، خراطيم'
-    }
-  ]
-
-  // Smooth scroll initialization
-  useEffect(() => {
-    const style = document.createElement('style')
-    style.textContent = `
-      * {
-        scroll-behavior: smooth;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-      }
-      
-      body {
-        font-feature-settings: "kern", "liga", "clig", "calt";
-        font-kerning: normal;
-        text-rendering: optimizeLegibility;
-        overflow-x: hidden;
-      }
-    `
-    document.head.appendChild(style)
-    
-    return () => {
-      document.head.removeChild(style)
-    }
-  }, [])
+/* =========================
+   Product Card
+========================= */
+const ProductCard = ({ product }) => {
+  // Use the product.icon field and transform it
+  const iconClass = getIconClass(product.icon)
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#fafafa] to-[#f0f0f0]">
-      {/* Hero Section - Adjusted with proper spacing */}
-      <section className="relative bg-[#1a1a1a] text-white overflow-hidden pb-8 md:pb-0">
-        <div className="relative h-auto md:h-[70vh] lg:h-[85vh] pt-20 md:pt-0">
-          <div 
-            className="absolute inset-0 bg-cover bg-center"
-            style={{ 
-              backgroundImage: 'url("/renault-trucks-k-2021-ar.jpg.webp")',
-              backgroundPosition: 'center 30%'
-            }}
-          >
-            <div className="absolute inset-0 bg-gradient-to-b from-[#1a1a1a]/90 via-[#1a1a1a]/80 to-[#1a1a1a]/90"></div>
-          </div>
-          
-          <div className="container mx-auto px-4 h-full flex items-center relative z-10 py-12 md:py-0">
-            <div className="w-full max-w-6xl mx-auto">
-              <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-center">
-                <div className="lg:w-1/2 text-center lg:text-right mb-8 md:mb-0">
-                  <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 lg:mb-6 leading-tight font-['Tajawal','sans-serif']">
-                    علاء الدين شاحنات
-                  </h1>
-                  <p className="text-lg md:text-xl mb-6 lg:mb-8 text-gray-200 max-w-xl mx-auto lg:mx-0 lg:mr-auto font-light tracking-wide">
-                    قطع غيار شاحنات رينو الأصليه والمعتمده لجميع الموديلات
-                  </p>
-                  <Link 
-                    to="/products" 
-                    className="bg-[#FFD700] hover:bg-[#FFE44D] text-[#1a1a1a] px-8 py-4 rounded-xl font-bold inline-flex items-center justify-center gap-2 transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl font-['Tajawal','sans-serif']"
-                  >
-                    <span className="tracking-wide">تصفح المنتجات</span>
-                    <i className="fa-solid fa-arrow-left"></i>
-                  </Link>
-                </div>
+    <Link
+      to={`/product/${product.id}`}
+      className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col h-full group"
+    >
+      {/* Icon Section */}
+      <div className="relative h-48 bg-gradient-to-r from-blue-50 to-gray-100 flex items-center justify-center">
+        <i className={`${iconClass} text-renault-blue text-5xl group-hover:scale-110 transition-transform duration-300`} />
 
-                {/* Feature Cards Grid - Positioned properly for mobile */}
-                <div className="lg:w-1/2 w-full relative z-20">
-                  <div className="grid grid-cols-2 gap-3 sm:gap-4 md:gap-6 relative -top-6 sm:top-0">
-                    {[
-                      { icon: 'fa-solid fa-industry', title: 'جوده أصلية', desc: 'قطع غيار معتمده من رينو' },
-                      { icon: 'fa-solid fa-truck-fast', title: 'شحن سريع', desc: 'توصيل في جميع أنحاء المملكة' },
-                      { icon: 'fa-solid fa-gem', title: 'أسعار تنافسية', desc: 'أفضل الأسعار في السوق' },
-                      { icon: 'fa-solid fa-screwdriver-wrench', title: 'دعم فني', desc: 'استشارات فنية مجانية' }
-                    ].map((f, i) => (
-                      <div 
-                        key={i} 
-                        className="bg-white/10 backdrop-blur-sm border border-white/20 p-4 md:p-6 rounded-2xl text-center hover:bg-white/15 transition-all duration-300 hover:border-[#FFD700]/30 shadow-lg md:shadow-xl h-full min-h-[140px] sm:min-h-[160px] flex flex-col justify-center"
-                      >
-                        <i className={`${f.icon} text-2xl md:text-3xl mb-3 text-[#FFD700]`}></i>
-                        <h3 className="font-bold text-sm md:text-base mb-1 font-['Tajawal','sans-serif']">{f.title}</h3>
-                        <p className="text-xs md:text-sm text-gray-300 opacity-90 tracking-tight">{f.desc}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
+        <span className="absolute top-3 left-3 bg-white/90 text-renault-blue text-xs font-bold px-3 py-1 rounded-full border border-renault-blue/20">
+          {product.category}
+        </span>
+
+        <span className="absolute top-3 right-3 bg-white/90 text-gray-700 text-xs font-bold px-3 py-1 rounded-full border border-gray-200">
+          {product.models?.[0]}
+        </span>
+
+        <span className="absolute bottom-3 left-3 bg-gray-800/90 text-white text-xs font-mono px-3 py-1.5 rounded-lg backdrop-blur-sm">
+          {product.oem}
+        </span>
+      </div>
+
+      {/* Details */}
+      <div className="p-5 flex-1 flex flex-col">
+        <h3 className="text-lg font-bold text-industrial-dark mb-3 line-clamp-2 h-14 leading-tight group-hover:text-renault-blue transition-colors">
+          {product.name}
+        </h3>
+
+        <p className="text-gray-600 text-sm mb-4 flex-1 line-clamp-3 leading-relaxed">
+          {product.description}
+        </p>
+
+        <div className="mt-auto">
+          <div className="flex flex-wrap gap-2 mb-4">
+            {product.models?.slice(0, 3).map((model, index) => (
+              <span
+                key={index}
+                className="bg-blue-50 text-renault-blue text-xs font-medium px-3 py-1.5 rounded-lg border border-blue-100 hover:bg-blue-100 transition-colors"
+              >
+                {model}
+              </span>
+            ))}
+            {product.models?.length > 3 && (
+              <span className="bg-gray-100 text-gray-600 text-xs font-medium px-3 py-1.5 rounded-lg hover:bg-gray-200 transition-colors">
+                +{product.models.length - 3}
+              </span>
+            )}
           </div>
-          
-          {/* Scroll indicator - positioned properly */}
-          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 hidden md:block">
-            <div className="animate-bounce">
-              <i className="fa-solid fa-chevron-down text-[#FFD700] text-2xl"></i>
+
+          <div className="flex justify-between items-center bg-gray-50 p-3 rounded-lg group-hover:bg-blue-50 transition-colors">
+            <div className="flex items-center text-gray-600 group-hover:text-renault-blue transition-colors">
+              <i className="fas fa-info-circle ml-2" />
+              <span className="text-sm font-medium">تفاصيل المنتج</span>
             </div>
+
+            <i className="fas fa-arrow-left text-renault-blue text-lg group-hover:translate-x-1 transition-transform" />
           </div>
         </div>
-      </section>
+      </div>
+    </Link>
+  )
+}
 
-      {/* Categories Section - Adjusted spacing */}
-      <section className="py-12 md:py-20 bg-gradient-to-b from-white to-[#f8f8f8] mt-0 md:mt-0">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-10 md:mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1a1a1a] mb-4 font-['Tajawal','sans-serif']">
-              فئات المنتجات
-            </h2>
-            <p className="text-[#666] max-w-2xl mx-auto font-light tracking-wide">
-              اكتشف مجموعتنا الواسعة من قطع غيار شاحنات رينو الأصلية
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-            {categories.map((cat) => (
-              <Link 
-                key={cat.name} 
-                to={`/products?category=${encodeURIComponent(cat.name)}`}
-                className="group bg-white border border-[#e0e0e0] rounded-2xl p-6 md:p-8 text-center hover:shadow-2xl hover:border-[#FFD700]/30 transition-all duration-300 transform hover:-translate-y-2 overflow-hidden shadow-sm"
-              >
-                <div className="relative inline-flex justify-center items-center mb-4 md:mb-6">
-                  <div className="absolute w-16 h-16 md:w-20 md:h-20 bg-[#0052A1]/10 rounded-full group-hover:scale-110 transition-transform duration-300"></div>
-                  <i className={`${cat.icon} text-3xl md:text-4xl text-[#0052A1] relative z-10`}></i>
-                </div>
-                <h3 className="font-bold text-xl mb-2 group-hover:text-[#0052A1] transition-colors duration-300 font-['Tajawal','sans-serif']">
-                  {cat.name}
-                </h3>
-                <p className="text-sm md:text-base text-[#666] mb-4 md:mb-6 leading-relaxed font-light tracking-wide">
-                  {cat.description}
-                </p>
-                <span className="inline-flex items-center gap-2 font-bold text-[#FFD700] bg-[#FFF9E6] px-4 py-2 rounded-full text-sm md:text-base">
-                  {cat.count} منتج
-                  <i className="fa-solid fa-arrow-left text-sm"></i>
-                </span>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
+/* =========================
+   Category Filter
+========================= */
+const CategoryFilter = ({ selectedCategory, onCategoryChange }) => {
+  const categories = [
+    { value: 'جميع الأقسام', icon: 'fas fa-layer-group' },
+    { value: 'قطع الدفرنس', icon: 'fas fa-cogs' },
+    { value: 'أكس كامل', icon: 'fas fa-warehouse' },
+    { value: 'نظام التعليق', icon: 'fas fa-car-side' },
+    { value: 'قطع المحرك', icon: 'fas fa-engine' },
+    { value: 'قطع القير', icon: 'fas fa-cog' },
+    { value: 'نظام الفرامل', icon: 'fas fa-brake-warning' },
+    { value: 'الكهرباء', icon: 'fas fa-bolt' },
+    { value: 'نظام التبريد', icon: 'fas fa-fan' },
+    { value: 'مستهلكات', icon: 'fas fa-boxes' },
+    { value: 'إكسسوارات', icon: 'fas fa-tools' }
+  ]
 
-      {/* Featured Products Section */}
-      <section className="py-12 md:py-20 bg-gradient-to-b from-[#f8f8f8] to-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-10 md:mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1a1a1a] mb-4 font-['Tajawal','sans-serif']">
-              منتجات مميزة
-            </h2>
-            <p className="text-[#666] max-w-2xl mx-auto font-light tracking-wide">
-              أفضل قطع الغيار المختارة بعناية لشاحنات رينو
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
-            {featuredProducts.map(product => (
-              <div 
-                key={product.id} 
-                className="transform transition-all duration-300 hover:-translate-y-2 min-h-full"
-              >
-                <ProductCard product={product} />
-              </div>
-            ))}
-          </div>
-          
-          <div className="text-center mt-12 md:mt-16">
-            <Link 
-              to="/products" 
-              className="inline-flex items-center gap-3 bg-[#0052A1] hover:bg-[#0066CC] text-white px-8 py-4 rounded-xl font-bold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl font-['Tajawal','sans-serif']"
+  return (
+    <div className="mb-8">
+      <h3 className="text-lg font-bold text-industrial-dark mb-4 flex items-center">
+        <i className="fas fa-filter ml-2" />
+        تصفية حسب القسم
+      </h3>
+
+      <div className="flex overflow-x-auto gap-3 pb-2">
+        {categories.map(category => {
+          const active =
+            selectedCategory === category.value ||
+            (!selectedCategory && category.value === 'جميع الأقسام')
+
+          return (
+            <button
+              key={category.value}
+              onClick={() => onCategoryChange(category.value)}
+              className={`flex flex-col items-center justify-center min-w-[120px] px-4 py-3 rounded-xl transition-all ${
+                active
+                  ? 'bg-gradient-to-r from-renault-blue to-blue-600 text-white shadow-lg transform -translate-y-1'
+                  : 'bg-white text-gray-700 border border-gray-200 hover:bg-gray-50 hover:shadow-md'
+              }`}
             >
-              <span className="tracking-wide">عرض جميع المنتجات</span>
-              <i className="fa-solid fa-arrow-left"></i>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Call to Action Banner */}
-      <section className="py-12 md:py-16 bg-gradient-to-r from-[#1a1a1a] to-[#0052A1] text-white overflow-hidden">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-            <div className="md:w-2/3 text-center md:text-right">
-              <h3 className="text-2xl md:text-3xl font-bold mb-4 font-['Tajawal','sans-serif']">
-                تحتاج مساعدة في اختيار القطعة المناسبة؟
-              </h3>
-              <p className="text-gray-200 font-light tracking-wide">
-                فريقنا الفني جاهز لمساعدتك في اختيار قطع الغيار الأصلية المناسبة لشاحنتك
-              </p>
-            </div>
-            <div className="md:w-1/3 text-center md:text-right">
-              <Link 
-                to="/contact" 
-                className="inline-flex items-center gap-3 bg-[#FFD700] hover:bg-[#FFE44D] text-[#1a1a1a] px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-bold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl w-full md:w-auto justify-center font-['Tajawal','sans-serif']"
-              >
-                <span className="tracking-wide">اتصل بنا الآن</span>
-                <i className="fa-solid fa-phone"></i>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+              <i className={`${category.icon} text-2xl mb-2 ${active ? 'text-white' : 'text-renault-blue'}`} />
+              <span className="text-sm font-bold whitespace-nowrap">
+                {category.value}
+              </span>
+            </button>
+          )
+        })}
+      </div>
     </div>
   )
 }
 
-export default Home
+/* =========================
+   Products Page
+========================= */
+const Products = () => {
+  const [searchParams, setSearchParams] = useSearchParams()
+  const [searchTerm, setSearchTerm] = useState('')
+  const [selectedCategory, setSelectedCategory] =
+    useState(searchParams.get('category') || '')
+
+  const filteredProducts = useMemo(() => {
+    return productsData.filter(product => {
+      const searchLower = searchTerm.toLowerCase()
+      const matchesSearch =
+        product.name.toLowerCase().includes(searchLower) ||
+        product.oem.toLowerCase().includes(searchLower) ||
+        product.description.toLowerCase().includes(searchLower)
+
+      const matchesCategory =
+        !selectedCategory ||
+        selectedCategory === 'جميع الأقسام' ||
+        product.category === selectedCategory
+
+      return matchesSearch && matchesCategory
+    })
+  }, [searchTerm, selectedCategory])
+
+  const handleCategoryChange = category => {
+    setSelectedCategory(category)
+    category === 'جميع الأقسام'
+      ? setSearchParams({})
+      : setSearchParams({ category })
+  }
+
+  return (
+    <>
+      {/* ADD HELMET WITH SEO TAGS */}
+      <Helmet>
+        <title>معرض قطع غيار رينو - منتجات أصلية لشاحنات رينو</title>
+        <meta name="description" content="تصفح كتالوج قطع غيار شاحنات رينو الأصلية. دفرنس، أكس كامل، قطع محرك، نظام فرامل، كهرباء، تبريد، وإكسسوارات. البحث حسب النوع والمواصفات." />
+        <meta name="keywords" content="قطع غيار رينو للبيع, كتالوج قطع غيار رينو, دفرنس رينو, أكس رينو, فرامل رينو, قطع محرك رينو, منتجات رينو, البحث عن قطع غيار" />
+        <link rel="canonical" href="https://renault-trucks-parts.com/products" />
+        
+        {/* Open Graph */}
+        <meta property="og:title" content="معرض قطع غيار رينو - منتجات أصلية" />
+        <meta property="og:description" content="كتالوج كامل لقطع غيار شاحنات رينو الأصلية والبديلة" />
+        <meta property="og:url" content="https://renault-trucks-parts.com/products" />
+        <meta property="og:type" content="website" />
+        
+        {/* Structured Data for Product Collection */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            "name": "معرض قطع غيار رينو",
+            "description": "مجموعة كاملة من قطع غيار شاحنات رينو الأصلية",
+            "url": "https://renault-trucks-parts.com/products",
+            "mainEntity": {
+              "@type": "ItemList",
+              "numberOfItems": filteredProducts.length,
+              "itemListElement": filteredProducts.slice(0, 10).map((product, index) => ({
+                "@type": "ListItem",
+                "position": index + 1,
+                "item": {
+                  "@type": "Product",
+                  "name": product.name,
+                  "description": product.description,
+                  "url": `https://renault-trucks-parts.com/product/${product.id}`
+                }
+              }))
+            }
+          })}
+        </script>
+      </Helmet>
+
+      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white py-8">
+        <div className="container mx-auto px-4">
+          {/* Header */}
+          <div className="text-center mb-8">
+            <div className="inline-flex items-center justify-center p-4 bg-gradient-to-r from-renault-blue to-blue-600 rounded-2xl mb-4 shadow-lg">
+              <i className="fas fa-truck-moving text-white text-4xl" />
+            </div>
+            <h1 className="text-3xl md:text-4xl font-bold text-industrial-dark mb-4">
+              معرض قطع غيار رينو
+            </h1>
+            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+              اكتشف مجموعتنا الكاملة من قطع غيار شاحنات رينو
+            </p>
+          </div>
+
+          {/* Search */}
+          <div className="bg-white rounded-2xl shadow-lg p-6 mb-8 border border-gray-100">
+            <div className="relative">
+              <input
+                type="text"
+                placeholder="ابحث بالاسم، رقم OEM، أو الوصف..."
+                value={searchTerm}
+                onChange={e => setSearchTerm(e.target.value)}
+                className="w-full px-4 py-3 pr-12 border-2 border-gray-200 rounded-xl focus:border-renault-blue focus:ring-2 focus:ring-renault-blue/20 transition-all"
+              />
+              <i className="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
+              {searchTerm && (
+                <button
+                  onClick={() => setSearchTerm('')}
+                  className="absolute left-12 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                >
+                  <i className="fas fa-times"></i>
+                </button>
+              )}
+            </div>
+            <p className="text-gray-500 text-sm mt-3 flex items-center gap-2">
+              <i className="fas fa-info-circle"></i>
+              {filteredProducts.length} منتج متوفر
+            </p>
+          </div>
+
+          <CategoryFilter
+            selectedCategory={selectedCategory}
+            onCategoryChange={handleCategoryChange}
+          />
+
+          {/* Products Grid */}
+          {filteredProducts.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              {filteredProducts.map(product => (
+                <ProductCard key={product.id} product={product} />
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-16 bg-white rounded-2xl shadow-lg border border-gray-100">
+              <i className="fas fa-search text-6xl text-gray-300 mb-4" />
+              <h3 className="text-2xl font-bold mb-4 text-gray-700">
+                لم نعثر على منتجات
+              </h3>
+              <p className="text-gray-500 mb-6 max-w-md mx-auto">
+                حاول تغيير كلمات البحث أو اختر قسم مختلف
+              </p>
+              <button
+                onClick={() => {
+                  setSearchTerm('')
+                  setSelectedCategory('جميع الأقسام')
+                  setSearchParams({})
+                }}
+                className="bg-renault-blue hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-bold transition-colors shadow-md hover:shadow-lg"
+              >
+                عرض جميع المنتجات
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
+    </>
+  )
+}
+
+export default Products
