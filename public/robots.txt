@@ -1,8 +1,15 @@
 User-agent: *
 Allow: /
-Sitemap: https://yourdomain.com/sitemap.xml
-Sitemap: https://yourdomain.com/sitemap-index.xml
+Sitemap: https://renault-trucks-parts.com/sitemap.xml
 
-# Disallow (if needed):
-# Disallow: /admin/
-# Disallow: /api/
+User-agent: Googlebot
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+User-agent: Bingbot
+Allow: /
+Disallow: /admin/
+
+# Crawl delay
+Crawl-delay: 10
